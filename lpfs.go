@@ -15,8 +15,8 @@ const (
 	procdir_stat             string = "/proc/stat"
 	procdir_uptime           string = "/proc/uptime"
 	procdir_per_process_stat string = "/stat"
-	procdir_meminfo		 string = "/proc/meminfo"
-	procdir_osrelease	 string = "/proc/sys/kernel/osrelease"
+	procdir_meminfo          string = "/proc/meminfo"
+	procdir_osrelease        string = "/proc/sys/kernel/osrelease"
 )
 
 //	Procstat contains process stat available in /proc/<pid>/stat.
@@ -75,7 +75,7 @@ type Procstat struct {
 	ExitCode            int
 }
 
-//	GetLoadAverage1 returns the load average over the last minute.
+// GetLoadAverage1 returns the load average over the last minute.
 func GetLoadAverage1() (float64, error) {
 	dat, err := os.ReadFile(procdir_loadavg)
 	if err != nil {
@@ -94,7 +94,7 @@ func GetLoadAverage1() (float64, error) {
 	return lavg, nil
 }
 
-//	GetLoadAverage5 returns the load average over the last 5 minutes.
+// GetLoadAverage5 returns the load average over the last 5 minutes.
 func GetLoadAverage5() (float64, error) {
 	dat, err := os.ReadFile(procdir_loadavg)
 	if err != nil {
@@ -113,7 +113,7 @@ func GetLoadAverage5() (float64, error) {
 	return lavg, nil
 }
 
-//	GetLoadAverage15 returns the load average over the last 15 minutes.
+// GetLoadAverage15 returns the load average over the last 15 minutes.
 func GetLoadAverage15() (float64, error) {
 	dat, err := os.ReadFile(procdir_loadavg)
 	if err != nil {
@@ -132,7 +132,7 @@ func GetLoadAverage15() (float64, error) {
 	return lavg, nil
 }
 
-//	GetRunnableQueueSize returns the number of currently runnable tasks.
+// GetRunnableQueueSize returns the number of currently runnable tasks.
 func GetRunnableQueueSize() (int, error) {
 	dat, err := os.ReadFile(procdir_loadavg)
 	if err != nil {
@@ -151,7 +151,7 @@ func GetRunnableQueueSize() (int, error) {
 	return runq, err
 }
 
-//	GetTaskQueueSize returns the number of existing tasks in the system.
+// GetTaskQueueSize returns the number of existing tasks in the system.
 func GetTaskQueueSize() (int, error) {
 	dat, err := os.ReadFile(procdir_loadavg)
 	if err != nil {
@@ -170,7 +170,7 @@ func GetTaskQueueSize() (int, error) {
 	return tskq, err
 }
 
-//	GetMostRecentPid returns the the PID of the process that was most recently created on the system.
+// GetMostRecentPid returns the the PID of the process that was most recently created on the system.
 func GetMostRecentPid() (int, error) {
 	dat, err := os.ReadFile(procdir_loadavg)
 	if err != nil {
@@ -189,7 +189,7 @@ func GetMostRecentPid() (int, error) {
 	return pid, nil
 }
 
-//	GetSwapFilename returns the swap partition filename.
+// GetSwapFilename returns the swap partition filename.
 func GetSwapFilename() (string, error) {
 	dat, err := os.ReadFile(procdir_swaps)
 	if err != nil {
@@ -207,7 +207,7 @@ func GetSwapFilename() (string, error) {
 	return s, err
 }
 
-//	GetSwapType returns the swap partition type.
+// GetSwapType returns the swap partition type.
 func GetSwapType() (string, error) {
 	dat, err := os.ReadFile(procdir_swaps)
 	if err != nil {
@@ -225,7 +225,7 @@ func GetSwapType() (string, error) {
 	return s, err
 }
 
-//	GetSwapSize returns the swap partition total size.
+// GetSwapSize returns the swap partition total size.
 func GetSwapSize() (int, error) {
 	dat, err := os.ReadFile(procdir_swaps)
 	if err != nil {
@@ -247,7 +247,7 @@ func GetSwapSize() (int, error) {
 	return s, err
 }
 
-//	GetSwapUsed returns the swap partition used size.
+// GetSwapUsed returns the swap partition used size.
 func GetSwapUsed() (int, error) {
 	dat, err := os.ReadFile(procdir_swaps)
 	if err != nil {
@@ -269,7 +269,7 @@ func GetSwapUsed() (int, error) {
 	return s, err
 }
 
-//	GetSwapPriority returns the swap partition priority.
+// GetSwapPriority returns the swap partition priority.
 func GetSwapPriority() (int, error) {
 	dat, err := os.ReadFile(procdir_swaps)
 	if err != nil {
@@ -291,7 +291,7 @@ func GetSwapPriority() (int, error) {
 	return s, err
 }
 
-//	GetUptimeSystem returns the uptime of the system (seconds).
+// GetUptimeSystem returns the uptime of the system (seconds).
 func GetUptimeSystem() (float64, error) {
 	dat, err := os.ReadFile(procdir_uptime)
 	if err != nil {
@@ -310,7 +310,7 @@ func GetUptimeSystem() (float64, error) {
 	return us, nil
 }
 
-//	GetUptimeIdle returns the amount of time spent in idle process (seconds).
+// GetUptimeIdle returns the amount of time spent in idle process (seconds).
 func GetUptimeIdle() (float64, error) {
 	dat, err := os.ReadFile(procdir_uptime)
 	if err != nil {
@@ -329,7 +329,7 @@ func GetUptimeIdle() (float64, error) {
 	return ui, nil
 }
 
-//	GetCpuUserTime returns the amount of time spent in user mode (USER_HZ).
+// GetCpuUserTime returns the amount of time spent in user mode (USER_HZ).
 func GetCpuUserTime() (int, error) {
 	dat, err := os.ReadFile(procdir_stat)
 	if err != nil {
@@ -347,7 +347,7 @@ func GetCpuUserTime() (int, error) {
 	return s, nil
 }
 
-//	GetCpuNiceTime returns the amount of time spent in user mode with low priority (USER_HZ).
+// GetCpuNiceTime returns the amount of time spent in user mode with low priority (USER_HZ).
 func GetCpuNiceTime() (int, error) {
 	dat, err := os.ReadFile(procdir_stat)
 	if err != nil {
@@ -365,7 +365,7 @@ func GetCpuNiceTime() (int, error) {
 	return s, nil
 }
 
-//	GetCpuSystemTime returns the amount of time spent in system mode (USER_HZ).
+// GetCpuSystemTime returns the amount of time spent in system mode (USER_HZ).
 func GetCpuSystemTime() (int, error) {
 	dat, err := os.ReadFile(procdir_stat)
 	if err != nil {
@@ -383,7 +383,7 @@ func GetCpuSystemTime() (int, error) {
 	return s, nil
 }
 
-//	GetCpuIdleTime returns the amount of time spent in the idle task (USER_HZ times UptimeIdle).
+// GetCpuIdleTime returns the amount of time spent in the idle task (USER_HZ times UptimeIdle).
 func GetCpuIdleTime() (int, error) {
 	dat, err := os.ReadFile(procdir_stat)
 	if err != nil {
@@ -401,7 +401,7 @@ func GetCpuIdleTime() (int, error) {
 	return s, nil
 }
 
-//	GetCpuIowaitTime returns the amount of time waiting for I/O to complete (USER_HZ).
+// GetCpuIowaitTime returns the amount of time waiting for I/O to complete (USER_HZ).
 func GetCpuIowaitTime() (int, error) {
 	dat, err := os.ReadFile(procdir_stat)
 	if err != nil {
@@ -419,7 +419,7 @@ func GetCpuIowaitTime() (int, error) {
 	return s, nil
 }
 
-//	GetCpuIrqTime returns the amount of time servicing interrupts (USER_HZ).
+// GetCpuIrqTime returns the amount of time servicing interrupts (USER_HZ).
 func GetCpuIrqTime() (int, error) {
 	dat, err := os.ReadFile(procdir_stat)
 	if err != nil {
@@ -437,7 +437,7 @@ func GetCpuIrqTime() (int, error) {
 	return s, nil
 }
 
-//	GetCpuSoftirqTime returns the amount of time servicing softirqs(USER_HZ).
+// GetCpuSoftirqTime returns the amount of time servicing softirqs(USER_HZ).
 func GetCpuSoftirqTime() (int, error) {
 	dat, err := os.ReadFile(procdir_stat)
 	if err != nil {
@@ -455,7 +455,7 @@ func GetCpuSoftirqTime() (int, error) {
 	return s, nil
 }
 
-//	GetCpuStealTime returns the amount of time spent in other operating systems when running in a virtualized environment (USER_HZ).
+// GetCpuStealTime returns the amount of time spent in other operating systems when running in a virtualized environment (USER_HZ).
 func GetCpuStealTime() (int, error) {
 	dat, err := os.ReadFile(procdir_stat)
 	if err != nil {
@@ -473,7 +473,7 @@ func GetCpuStealTime() (int, error) {
 	return s, nil
 }
 
-//	GetCpuGuestTime returns the amount of time spent running a virtual CPU for guest operating systems (USER_HZ).
+// GetCpuGuestTime returns the amount of time spent running a virtual CPU for guest operating systems (USER_HZ).
 func GetCpuGuestTime() (int, error) {
 	dat, err := os.ReadFile(procdir_stat)
 	if err != nil {
@@ -491,7 +491,7 @@ func GetCpuGuestTime() (int, error) {
 	return s, nil
 }
 
-//	GetCpuGuestNiceTime returns the amount of time spent running a niced virtual CPU for guest operating systems (USER_HZ).
+// GetCpuGuestNiceTime returns the amount of time spent running a niced virtual CPU for guest operating systems (USER_HZ).
 func GetCpuGuestNiceTime() (int, error) {
 	dat, err := os.ReadFile(procdir_stat)
 	if err != nil {
@@ -509,8 +509,8 @@ func GetCpuGuestNiceTime() (int, error) {
 	return s, nil
 }
 
-//	GetProcessesBlockedSize returns the number of blocked processes in the system.
-// 	FIXME
+// GetProcessesBlockedSize returns the number of blocked processes in the system.
+// FIXME
 func GetProcessesBlockedSize() (int, error) {
 	dat, err := os.ReadFile(procdir_stat)
 	if err != nil {
@@ -531,7 +531,7 @@ func GetProcessesBlockedSize() (int, error) {
 	return blksz, nil
 }
 
-//	GetPerProcessStat returns a slice of Procstat containing per-process (all living processes in the system) stat information.
+// GetPerProcessStat returns a slice of Procstat containing per-process (all living processes in the system) stat information.
 func GetPerProcessStat() ([]Procstat, error) {
 
 	var pps_s []Procstat
@@ -568,7 +568,7 @@ func GetPerProcessStat() ([]Procstat, error) {
 	return pps_s, nil
 }
 
-//	GetProcessStat returns stat information of a giving process.
+// GetProcessStat returns stat information of a giving process.
 func GetProcessStat(pid int) (Procstat, error) {
 
 	statFile := procdir + "/" + strconv.Itoa(pid) + "/" + procdir_per_process_stat
@@ -590,124 +590,145 @@ func GetProcessStat(pid int) (Procstat, error) {
 		return Procstat{}, err
 	}
 
-	p.Comm = string(dat_s[1])[1 : len(dat_s[1])-1]
-	p.State = dat_s[2]
+	// Verify quantity of Comm words length in dat_s
+	i := 52 - len(dat_s)
 
-	p.Pgrp, err = strconv.Atoi(dat_s[4])
+	if i != 0 {
+		i *= -1
+
+		var Comm strings.Builder
+
+		for j := 1; j < i+2; j++ {
+			Comm.WriteString(dat_s[j])
+		}
+		p.Comm = Comm.String()[1 : len(Comm.String())-1]
+	} else {
+		p.Comm = string(dat_s[1])[1 : len(dat_s[1])-1]
+	}
+
+	p.State = dat_s[i+2]
+
+	p.Ppid, err = strconv.Atoi(dat_s[i+3])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.Session, err = strconv.Atoi(dat_s[5])
+	p.Pgrp, err = strconv.Atoi(dat_s[i+4])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.TtyNr, err = strconv.Atoi(dat_s[6])
+	p.Session, err = strconv.Atoi(dat_s[i+5])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.Tpgid, err = strconv.Atoi(dat_s[7])
+	p.TtyNr, err = strconv.Atoi(dat_s[i+6])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.Flags, err = strconv.Atoi(dat_s[8])
+	p.Tpgid, err = strconv.Atoi(dat_s[i+7])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.Minflt, err = strconv.Atoi(dat_s[9])
+	p.Flags, err = strconv.Atoi(dat_s[i+8])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.Cminflt, err = strconv.Atoi(dat_s[10])
+	p.Minflt, err = strconv.Atoi(dat_s[i+9])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.Majflt, err = strconv.Atoi(dat_s[11])
+	p.Cminflt, err = strconv.Atoi(dat_s[i+10])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.Cmajflt, err = strconv.Atoi(dat_s[12])
+	p.Majflt, err = strconv.Atoi(dat_s[i+11])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.Utime, err = strconv.Atoi(dat_s[13])
+	p.Cmajflt, err = strconv.Atoi(dat_s[i+12])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.Stime, err = strconv.Atoi(dat_s[14])
+	p.Utime, err = strconv.Atoi(dat_s[i+13])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.Cutime, err = strconv.Atoi(dat_s[15])
+	p.Stime, err = strconv.Atoi(dat_s[i+14])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.Cstime, err = strconv.Atoi(dat_s[16])
+	p.Cutime, err = strconv.Atoi(dat_s[i+15])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.Priority, err = strconv.Atoi(dat_s[17])
+	p.Cstime, err = strconv.Atoi(dat_s[i+16])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.Nice, err = strconv.Atoi(dat_s[18])
+	p.Priority, err = strconv.Atoi(dat_s[i+17])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.NumThreads, err = strconv.Atoi(dat_s[19])
+	p.Nice, err = strconv.Atoi(dat_s[i+18])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.Itrealvalue, err = strconv.Atoi(dat_s[20])
+	p.NumThreads, err = strconv.Atoi(dat_s[i+19])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.Starttime, err = strconv.Atoi(dat_s[21])
+	p.Itrealvalue, err = strconv.Atoi(dat_s[i+20])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.Vsize, err = strconv.Atoi(dat_s[22])
+	p.Starttime, err = strconv.Atoi(dat_s[i+21])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.Rss, err = strconv.Atoi(dat_s[23])
+	p.Vsize, err = strconv.Atoi(dat_s[i+22])
+	if err != nil {
+		fmt.Errorf("error parsing %v", dat_s)
+		return Procstat{}, err
+	}
+
+	p.Rss, err = strconv.Atoi(dat_s[i+23])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
@@ -715,163 +736,163 @@ func GetProcessStat(pid int) (Procstat, error) {
 
 	p.Rsslim = dat_s[24]
 
-	p.Startcode, err = strconv.Atoi(dat_s[25])
+	p.Startcode, err = strconv.Atoi(dat_s[i+25])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.Endcode, err = strconv.Atoi(dat_s[26])
+	p.Endcode, err = strconv.Atoi(dat_s[i+26])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.Startstack, err = strconv.Atoi(dat_s[27])
+	p.Startstack, err = strconv.Atoi(dat_s[i+27])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.Kstkesp, err = strconv.Atoi(dat_s[28])
+	p.Kstkesp, err = strconv.Atoi(dat_s[i+28])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.Kstkeip, err = strconv.Atoi(dat_s[29])
+	p.Kstkeip, err = strconv.Atoi(dat_s[i+29])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.Signal, err = strconv.Atoi(dat_s[30])
+	p.Signal, err = strconv.Atoi(dat_s[i+30])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.Blocked, err = strconv.Atoi(dat_s[31])
+	p.Blocked, err = strconv.Atoi(dat_s[i+31])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.Sigignore, err = strconv.Atoi(dat_s[32])
+	p.Sigignore, err = strconv.Atoi(dat_s[i+32])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.Sigcatch, err = strconv.Atoi(dat_s[33])
+	p.Sigcatch, err = strconv.Atoi(dat_s[i+33])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.Wchan, err = strconv.Atoi(dat_s[34])
+	p.Wchan, err = strconv.Atoi(dat_s[i+34])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.Nswap, err = strconv.Atoi(dat_s[35])
+	p.Nswap, err = strconv.Atoi(dat_s[i+35])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.Cnswap, err = strconv.Atoi(dat_s[36])
+	p.Cnswap, err = strconv.Atoi(dat_s[i+36])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.ExitSignal, err = strconv.Atoi(dat_s[37])
+	p.ExitSignal, err = strconv.Atoi(dat_s[i+37])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.Processor, err = strconv.Atoi(dat_s[38])
+	p.Processor, err = strconv.Atoi(dat_s[i+38])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.RtPriority, err = strconv.Atoi(dat_s[39])
+	p.RtPriority, err = strconv.Atoi(dat_s[i+39])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.Policy, err = strconv.Atoi(dat_s[40])
+	p.Policy, err = strconv.Atoi(dat_s[i+40])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.DelayacctBlkioTicks, err = strconv.Atoi(dat_s[41])
+	p.DelayacctBlkioTicks, err = strconv.Atoi(dat_s[i+41])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.GuestTime, err = strconv.Atoi(dat_s[42])
+	p.GuestTime, err = strconv.Atoi(dat_s[i+42])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.CguestTime, err = strconv.Atoi(dat_s[43])
+	p.CguestTime, err = strconv.Atoi(dat_s[i+43])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.StartData, err = strconv.Atoi(dat_s[44])
+	p.StartData, err = strconv.Atoi(dat_s[i+44])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.EndData, err = strconv.Atoi(dat_s[45])
+	p.EndData, err = strconv.Atoi(dat_s[i+45])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.StartBrk, err = strconv.Atoi(dat_s[46])
+	p.StartBrk, err = strconv.Atoi(dat_s[i+46])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.ArgStart, err = strconv.Atoi(dat_s[47])
+	p.ArgStart, err = strconv.Atoi(dat_s[i+47])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.ArgEnd, err = strconv.Atoi(dat_s[48])
+	p.ArgEnd, err = strconv.Atoi(dat_s[i+48])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.EnvStart, err = strconv.Atoi(dat_s[49])
+	p.EnvStart, err = strconv.Atoi(dat_s[i+49])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.EnvEnd, err = strconv.Atoi(dat_s[50])
+	p.EnvEnd, err = strconv.Atoi(dat_s[i+50])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
 	}
 
-	p.ExitCode, err = strconv.Atoi(string(dat_s[51])[:len(dat_s[51])-1])
+	p.ExitCode, err = strconv.Atoi(string(dat_s[i+51])[:len(dat_s[i+51])-1])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
 		return Procstat{}, err
@@ -880,7 +901,7 @@ func GetProcessStat(pid int) (Procstat, error) {
 	return p, nil
 }
 
-//	GetMemTotal returns the total memory
+// GetMemTotal returns the total memory
 func GetMemTotal() (int, error) {
 	dat, err := os.ReadFile(procdir_meminfo)
 	if err != nil {
@@ -898,7 +919,7 @@ func GetMemTotal() (int, error) {
 	return s, err
 }
 
-//	GetMemFree returns the free memory
+// GetMemFree returns the free memory
 func GetMemFree() (int, error) {
 	dat, err := os.ReadFile(procdir_meminfo)
 	if err != nil {
@@ -916,7 +937,7 @@ func GetMemFree() (int, error) {
 	return s, err
 }
 
-//	GetMemUsed returns the memory used
+// GetMemUsed returns the memory used
 func GetMemUsed() (int, error) {
 	dat, err := os.ReadFile(procdir_meminfo)
 	if err != nil {
@@ -940,7 +961,7 @@ func GetMemUsed() (int, error) {
 	return t - f, err
 }
 
-//	GetMemAvailable returns available memory
+// GetMemAvailable returns available memory
 func GetMemAvailable() (int, error) {
 	dat, err := os.ReadFile(procdir_meminfo)
 	if err != nil {
@@ -958,7 +979,7 @@ func GetMemAvailable() (int, error) {
 	return s, err
 }
 
-//	GetMemBuffers returns the memory buffers
+// GetMemBuffers returns the memory buffers
 func GetMemBuffers() (int, error) {
 	dat, err := os.ReadFile(procdir_meminfo)
 	if err != nil {
@@ -976,7 +997,7 @@ func GetMemBuffers() (int, error) {
 	return s, err
 }
 
-//	GetMemCached returns the memory cached
+// GetMemCached returns the memory cached
 func GetMemCached() (int, error) {
 	dat, err := os.ReadFile(procdir_meminfo)
 	if err != nil {
@@ -994,7 +1015,7 @@ func GetMemCached() (int, error) {
 	return s, err
 }
 
-//	GetKernelRelease returns the kernel version with additional information.
+// GetKernelRelease returns the kernel version with additional information.
 func GetKernelRelease() (string, error) {
 	dat, err := os.ReadFile(procdir_osrelease)
 	if err != nil {
