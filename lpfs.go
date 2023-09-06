@@ -593,6 +593,12 @@ func GetProcessStat(pid int) (Procstat, error) {
 	p.Comm = string(dat_s[1])[1 : len(dat_s[1])-1]
 	p.State = dat_s[2]
 
+	p.Ppid, err = strconv.Atoi(dat_s[3])
+	if err != nil {
+		fmt.Errorf("error parsing %v", dat_s)
+		return Procstat{}, err
+	}
+
 	p.Pgrp, err = strconv.Atoi(dat_s[4])
 	if err != nil {
 		fmt.Errorf("error parsing %v", dat_s)
