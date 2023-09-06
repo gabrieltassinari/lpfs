@@ -19,7 +19,7 @@
    
    your_var, err := lpfs.Function()
    
-   uptime, err : GetUptimeSystem() // A real example
+   uptime, err := lpfs.GetUptimeSystem() // A real example
    ```
 
 3. See the available functions, by using `go doc`.
